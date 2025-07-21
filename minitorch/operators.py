@@ -10,22 +10,73 @@ from typing import Callable, Iterable
 
 # Mathematical functions:
 # - mul
+def mul(x, y):
+    return x * y
 # - id
+def id(x):
+    return x
 # - add
+def add(x, y):
+    return x + y
+def addLists(ls1, ls2):
+    return [a + b for a, b in zip(ls1, ls2)] #不懂
 # - neg
+def neg(x):
+    return -x
+def negList(ls):
+    return [-x for x in ls]
 # - lt
+def lt(x, y):
+    return x < y
 # - eq
+def eq(x, y):
+    return x == y
 # - max
+def max(x, y):
+    if x > y:
+        return x
+    return y
 # - is_close
+def is_close(x, y, eps=1e-2):
+    if abs(x - y) < eps:
+        return 1
+    return 0
 # - sigmoid
+def sigmoid(x):
+    if x >= 0:
+        return 1.0 / (1.0 + math.exp(-x))
+    else:
+        return math.exp(x) / (1.0 + math.exp(x))
 # - relu
+def relu(x):
+    return max(0, x)
 # - log
+def log(x):
+    return math.log(x)
 # - exp
+def exp(x):
+    return math.exp(x)
 # - log_back
+def log_back(x, y):
+    if x ==0:
+        return float('inf')
+    return y * 1.0 / x
 # - inv
+def inv(x):
+    if x ==0:
+        return float('inf')
+    return 1.0 / x
 # - inv_back
+def inv_back(x, y):
+    if x ==0:
+        return float('inf')
+    return -y * 1.0 / (x * x)
 # - relu_back
 #
+def relu_back(x, y):
+    if x > 0:
+        return y
+    return 0
 # For sigmoid calculate as:
 # $f(x) =  \frac{1.0}{(1.0 + e^{-x})}$ if x >=0 else $\frac{e^x}{(1.0 + e^{x})}$
 # For is_close:

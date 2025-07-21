@@ -8,7 +8,7 @@ from minitorch import MathTest
 import minitorch
 from minitorch.operators import (
     add,
-    addLists,
+    #addLists,
     eq,
     id,
     inv,
@@ -18,8 +18,8 @@ from minitorch.operators import (
     max,
     mul,
     neg,
-    negList,
-    prod,
+    #negList,
+    #prod,
     relu,
     relu_back,
     sigmoid,
@@ -28,7 +28,7 @@ from minitorch.operators import (
 from .strategies import assert_close, small_floats
 
 # ## Task 0.1 Basic hypothesis tests.
-
+# pytest -m task0_1
 
 @pytest.mark.task0_1
 @given(small_floats, small_floats)
