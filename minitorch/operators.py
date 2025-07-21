@@ -18,19 +18,15 @@ def id(x):
 # - add
 def add(x, y):
     return x + y
-def addLists(ls1, ls2):
-    return [a + b for a, b in zip(ls1, ls2)] #不懂
 # - neg
 def neg(x):
     return -x
-def negList(ls):
-    return [-x for x in ls]
 # - lt
 def lt(x, y):
     return x < y
 # - eq
 def eq(x, y):
-    return x == y
+    return abs(x - y) < 1e-5
 # - max
 def max(x, y):
     if x > y:
