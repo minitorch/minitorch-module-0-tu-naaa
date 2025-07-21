@@ -8,7 +8,7 @@ from minitorch import MathTest
 import minitorch
 from minitorch.operators import (
     add,
-    #addLists,
+    addLists,
     eq,
     id,
     inv,
@@ -18,8 +18,8 @@ from minitorch.operators import (
     max,
     mul,
     neg,
-    #negList,
-    #prod,
+    negList,
+    prod,
     relu,
     relu_back,
     sigmoid,
@@ -185,7 +185,8 @@ def test_sum_distribute(ls1: List[float], ls2: List[float]) -> None:
     is the same as the sum of each element of `ls1` plus each element of `ls2`.
     """
     # TODO: Implement for Task 0.3.
-    raise NotImplementedError("Need to implement for Task 0.3")
+    assert eq(add(sum(ls1), sum(ls2)), sum(addLists(ls1, ls2))) == 1
+    #raise NotImplementedError("Need to implement for Task 0.3")
 
 
 @pytest.mark.task0_3
