@@ -30,6 +30,7 @@ from .strategies import assert_close, small_floats
 # ## Task 0.1 Basic hypothesis tests.
 # pytest -m task0_1
 
+
 @pytest.mark.task0_1
 @given(small_floats, small_floats)
 def test_same_as_python(x: float, y: float) -> None:
@@ -113,9 +114,11 @@ def test_sigmoid(a: float) -> None:
     assert 0.0 <= tmp <= 1.0
     assert abs((1 - tmp) - sigmoid(-a)) < eps
     assert sigmoid(0) == 0.5
-    assert tmp >= sigmoid(a - eps) #当a比较大的时候，sigmoid(a)和sigmoid(a±eps)都非常非常接近1了，精读问题只能写>=/<=
+    assert tmp >= sigmoid(
+        a - eps
+    )  # 当a比较大的时候，sigmoid(a)和sigmoid(a±eps)都非常非常接近1了，精读问题只能写>=/<=
     assert tmp <= sigmoid(a + eps)
-    #raise NotImplementedError("Need to implement for Task 0.2")
+    # raise NotImplementedError("Need to implement for Task 0.2")
 
 
 @pytest.mark.task0_2
@@ -125,18 +128,18 @@ def test_transitive(a: float, b: float, c: float) -> None:
     # TODO: Implement for Task 0.2.
     if lt(a, b) and lt(b, c):
         assert lt(a, c) == 1
-    #raise NotImplementedError("Need to implement for Task 0.2")
+    # raise NotImplementedError("Need to implement for Task 0.2")
 
 
 @pytest.mark.task0_2
 @given(small_floats, small_floats)
-def test_symmetric(a:float, b:float) -> None:
+def test_symmetric(a: float, b: float) -> None:
     """Write a test that ensures that :func:`minitorch.operators.mul` is symmetric, i.e.
     gives the same value regardless of the order of its input.
     """
     # TODO: Implement for Task 0.2.
     assert eq(mul(a, b), mul(b, a)) == 1
-    #raise NotImplementedError("Need to implement for Task 0.2")
+    # raise NotImplementedError("Need to implement for Task 0.2")
 
 
 @pytest.mark.task0_2
@@ -146,8 +149,8 @@ def test_distribute(a: float, b: float, c: float) -> None:
     :math:`z \times (x + y) = z \times x + z \times y`
     """
     # TODO: Implement for Task 0.2.
-    assert eq(mul(c, add(a, b)), add(mul(c, a), mul(c, b))) ==1
-    #raise NotImplementedError("Need to implement for Task 0.2")
+    assert eq(mul(c, add(a, b)), add(mul(c, a), mul(c, b))) == 1
+    # raise NotImplementedError("Need to implement for Task 0.2")
 
 
 @pytest.mark.task0_2
@@ -155,9 +158,9 @@ def test_distribute(a: float, b: float, c: float) -> None:
 def test_other(a: float, b: float, c: float) -> None:
     """Write a test that ensures some other property holds for your functions."""
     # TODO: Implement for Task 0.2.
-    assert eq(mul(a, mul(b, c)), mul(mul(a, b), c)) == 1 #结合律
-    assert eq(neg(neg(a)), a) == 1 #-(-a)==a
-    #raise NotImplementedError("Need to implement for Task 0.2")
+    assert eq(mul(a, mul(b, c)), mul(mul(a, b), c)) == 1  # 结合律
+    assert eq(neg(neg(a)), a) == 1  # -(-a)==a
+    # raise NotImplementedError("Need to implement for Task 0.2")
 
 
 # ## Task 0.3  - Higher-order functions
@@ -186,7 +189,7 @@ def test_sum_distribute(ls1: List[float], ls2: List[float]) -> None:
     """
     # TODO: Implement for Task 0.3.
     assert eq(add(sum(ls1), sum(ls2)), sum(addLists(ls1, ls2))) == 1
-    #raise NotImplementedError("Need to implement for Task 0.3")
+    # raise NotImplementedError("Need to implement for Task 0.3")
 
 
 @pytest.mark.task0_3

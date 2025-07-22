@@ -38,7 +38,7 @@ class Module:
         # 另一个等价实现：
         # for m in self._modules.values():
         #     m.train()
-        #raise NotImplementedError("Need to implement for Task 0.4")
+        # raise NotImplementedError("Need to implement for Task 0.4")
 
     def eval(self) -> None:
         """Set the mode of this module and all descendent modules to `eval`."""
@@ -49,7 +49,7 @@ class Module:
         # 另一个等价实现：
         # for m in self._modules.values():
         #     m.eval()
-        #raise NotImplementedError("Need to implement for Task 0.4")
+        # raise NotImplementedError("Need to implement for Task 0.4")
 
     def named_parameters(self) -> Sequence[Tuple[str, Parameter]]:
         """Collect all the parameters of this module and its descendents.
@@ -65,9 +65,11 @@ class Module:
             n_params.append((name, param))
         for m_name, m in self._modules.items():
             for name, param in m.named_parameters():
-                n_params.append((m_name + "." + name, param)) #name的格式：ModuleA.ModuleB.ModuleC.p
+                n_params.append(
+                    (m_name + "." + name, param)
+                )  # name的格式：ModuleA.ModuleB.ModuleC.p
         return n_params
-        #raise NotImplementedError("Need to implement for Task 0.4")
+        # raise NotImplementedError("Need to implement for Task 0.4")
 
     def parameters(self) -> Sequence[Parameter]:
         """Enumerate over all the parameters of this module and its descendents."""
@@ -76,7 +78,7 @@ class Module:
         for _, param in self.named_parameters():
             params.append(param)
         return params
-        #raise NotImplementedError("Need to implement for Task 0.4")
+        # raise NotImplementedError("Need to implement for Task 0.4")
 
     def add_parameter(self, k: str, v: Any) -> Parameter:
         """Manually add a parameter. Useful helper for scalar parameters.
